@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # Lists privilages: index/new/create/show/edit/update/destroy
   resources :lists do
     # Bookmarks privilages: new/create/destroy
-    resources :bookmarks, only: [:index, :new, :create, :destroy]
+    resources :bookmarks, only: [:new, :create]
   end
+
+  # has to be outside since bookmarks/:id is already targeted
+  resources :bookmarks, only: [:destroy]
 end
