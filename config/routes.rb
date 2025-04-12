@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Lists privilages: index/new/create/show/edit/update/destroy
+  resources :lists do
+    # Bookmarks privilages: new/create/destroy
+    resources :bookmarks, only: [:index, :new, :create, :destroy]
+  end
 end
