@@ -1,1 +1,12 @@
-<h1>New Bookmark</h1>
+<div class="bookmark-creation">
+  <h1>Bookmark your favorite movie</h1>
+  <%# <p>Comment on your favorite movie:</p> %>
+
+  <%= simple_form_for([@list, @bookmark]) do |f| %>
+    <%= f.input :comment, input_html: { class: "create-bookmark" } %>
+    <%= f.association :movie, collection: Movie.all, label_method: :title, value_method: :id, input_html: { class: "create-bookmark" } %>
+    <%= f.submit "Create Bookmark", class: "btn btn-success" %>
+  <% end %>
+  <br>
+  <%= link_to "Go back to my list", list_path(@list), class:"non-underlined" %>
+</div>

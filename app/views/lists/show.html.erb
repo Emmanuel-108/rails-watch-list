@@ -1,0 +1,41 @@
+<div class="header">
+  <%= image_tag "popcorn.jpg", alt:"popcorns", class: "popcorn" %>
+  <div class="top-links">
+    <%= link_to "My lists", lists_path(@lists), class: "non-underlined" %>
+    <%= link_to "New list", new_list_path, class: "non-underlined" %>
+  </div>
+</div>
+
+<div class="banner-movies">
+  <p><%= @list.name %></p>
+</div>
+
+<div class="lists">
+  <div class="lists-header">
+    <h2></h2>
+    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-success" %>
+  </div>
+  <div class="row">
+  <% @list.movies.each do |movie| %>
+    <div class=".movie-card-no-background col-4">
+      <div>
+        <%= image_tag movie.poster_url, alt: "Movie Poster", width: 200 %>
+        <%= link_to 'Delete',
+          bookmark_path(movie),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+        %>
+      </div>
+      <div>
+        <p><span class="movie-title"><%= movie.title %></span> <i class="fa-solid fa-ellipsis-vertical"></i> <%= movie.rating %> ⭐</p>
+        <p><%= movie.overview %></p>
+      </div>
+
+      <%# Finding the bookmark which belongs to a movie and the list%>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <div class="review">
+        <p><i class="fa-solid fa-magnifying-glass"></i> <%= bookmark.comment %></p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
