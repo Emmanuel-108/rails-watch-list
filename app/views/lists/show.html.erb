@@ -1,7 +1,7 @@
 <div class="header">
   <%= image_tag "popcorn.jpg", alt:"popcorns", class: "popcorn" %>
   <div class="top-links">
-    <%= link_to "My lists", lists_path(@lists), class: "non-underlined" %>
+    <%= link_to "My lists", root_path(@lists), class: "non-underlined" %>
     <%= link_to "New list", new_list_path, class: "non-underlined" %>
   </div>
 </div>
