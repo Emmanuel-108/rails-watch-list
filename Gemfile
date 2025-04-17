@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.3.5"
 
+# Security gem
+ gem "dotenv-rails"
+
 # Extra gems
 gem "bootstrap", "~> 5.2"
 gem "autoprefixer-rails"
