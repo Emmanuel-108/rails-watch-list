@@ -1,7 +1,10 @@
 <%# Images folder: /app/assets/images %>
 
 <div class="header">
-  <%= image_tag "popcorn.jpg", alt:"popcorns", class: "popcorn" %>
+  <%#= image_tag "popcorn.jpg", alt:"popcorns", class: "popcorn" %>
+  <%= link_to movies_path do %>
+    <%= image_tag "popcorn.jpg", alt: "popcorns", class: "popcorn" %>
+  <% end %>
   <div class="top-links">
     <%= link_to "My lists", root_path(@lists), class: "non-underlined" %>
     <%= link_to "New list", new_list_path, class: "non-underlined" %>
@@ -21,8 +24,11 @@
   </div>
   <div class="row">
   <% @lists.each do |list| %>
-    <div class="movie-card col-4">
+    <div class="movie-card col-4" style="background-image: url('<%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>');">
       <%= link_to list.name, list_path(list), class: "non-underlined card-link" %>
+      <%= link_to list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-msg" do %>
+          <span><i class="fa-solid fa-trash-can"></i> Delete</span>
+      <% end %>
     </div>
   <% end %>
   </div>

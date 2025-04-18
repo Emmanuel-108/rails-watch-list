@@ -1,12 +1,14 @@
 <div class="header">
-  <%= image_tag "popcorn.jpg", alt:"popcorns", class: "popcorn" %>
+  <%= link_to movies_path do %>
+    <%= image_tag "popcorn.jpg", alt: "popcorns", class: "popcorn" %>
+  <% end %>
   <div class="top-links">
     <%= link_to "My lists", root_path(@lists), class: "non-underlined" %>
     <%= link_to "New list", new_list_path, class: "non-underlined" %>
   </div>
 </div>
 
-<div class="banner-movies">
+<div class="banner-movies" style="background-image: url('<%= cl_image_path @list.photo.key, height: 300, width: 400, crop: :fill %>');">
   <p><%= @list.name %></p>
 </div>
 
@@ -40,5 +42,5 @@
   </div>
 
   <%# Image testing %>
-  <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+  <%#= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
 </div>

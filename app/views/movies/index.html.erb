@@ -1,0 +1,30 @@
+<div class="header">
+  <%= link_to movies_path do %>
+    <%= image_tag "popcorn.jpg", alt: "popcorns", class: "popcorn" %>
+  <% end %>
+  <div class="top-links">
+    <%= link_to "My lists", root_path(@lists), class: "non-underlined" %>
+    <%= link_to "New list", new_list_path, class: "non-underlined" %>
+  </div>
+</div>
+
+<div class="banner-movies-list">
+  <p>- Movies List -</p>
+</div>
+
+<%# Movies section %>
+<div class="lists">
+  <div class="row">
+  <% @movies.each do |movie| %>
+    <div class=".movie-card-no-background col-4">
+      <div>
+        <%= image_tag movie.poster_url, alt: "Movie Poster", width: 200 %>
+      </div>
+      <div>
+        <p><span class="movie-title"><%= movie.title %></span> <i class="fa-solid fa-ellipsis-vertical"></i> <%= movie.rating %> ⭐</p>
+        <p><%= movie.overview %></p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

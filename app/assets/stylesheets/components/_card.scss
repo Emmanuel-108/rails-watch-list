@@ -1,5 +1,5 @@
 .movie-card {
-  background-image: asset-url("movie.jpg");
+  // background-image: asset-url("movie.jpg");
   background-size: cover;
   background-position: center;
   height: 200px;
@@ -38,4 +38,10 @@
 .movie-title {
   font-weight: bold;
   color: black;
+}
+
+.delete-msg {
+  text-decoration: none;
+  color: white;
+  font-size: medium;
 }

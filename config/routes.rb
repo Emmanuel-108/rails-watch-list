@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   # has to be outside since bookmarks/:id is already targeted
   resources :bookmarks, only: [:destroy]
+
+  resources :movies, only: [:index]
 end
